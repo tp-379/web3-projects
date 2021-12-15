@@ -12,6 +12,7 @@ export default {
   },
   setup() {
     provide('store', store)
+    store.methods.connectBlockchain()
   }
 }
 </script>
