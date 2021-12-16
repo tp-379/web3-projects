@@ -6,7 +6,12 @@ pragma solidity >=0.4.22 <0.9.0;
  * @dev Store & retrieve value in a variable
  */
 contract HelloWorld {
-  string message;
+
+  // defining a state variable
+  string public message;
+
+  // Defining an event
+  event onMessageUpdate(string updatedMessage);
 
   // initializes the state variable with a default value
   constructor() {
@@ -19,6 +24,7 @@ contract HelloWorld {
    */
   function store(string memory _message) public {
       message = _message;
+      emit onMessageUpdate(_message);
   }
 
   /**
