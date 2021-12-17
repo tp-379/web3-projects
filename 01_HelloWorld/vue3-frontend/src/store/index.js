@@ -7,6 +7,7 @@ const state = reactive({
     contractData: '',
     defaultAccount: '',
     error: '',
+    isDisbled: false,
     isLoading: false
 })
 
@@ -44,13 +45,18 @@ const methods = {
           }
     },
     storeMessage(message) {
+        state.isDisbled = true
         state.loading = true
         state.contractData.methods.store(message).send({ from: state.defaultAccount })
         .once('receipt', (receipt) => {
-            console.log(receipt)
-            state.loading = false
-            window.location.reload()
+            // do something
         })
+        state.contractData.events.onMessageUpdate().on("data", function(event) {
+            let message = event.returnValues
+            state.message = message.updatedMessage
+        }).on("error", console.error)
+        state.isDisbled = false
+        state.loading = false
     }
 }
 
