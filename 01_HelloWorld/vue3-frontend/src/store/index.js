@@ -12,27 +12,60 @@ const state = reactive({
 
 const methods = {
     async connectBlockchain() {
-        if (window.ethereum) {
-            window.web3 = new Web3(window.ethereum)
-            await window.ethereum.enable()
-          }
-          else if (window.web3) {
-            window.web3 = new Web3(window.web3.currentProvider)
-          }
-          else {
-           console.log('Need to install MetaMask!')
-          }
+        // if (window.ethereum) {
+        //     window.web3 = new Web3(window.ethereum)
+        //     await window.ethereum.enable()
+        //   }
+        //   else if (window.web3) {
+        //     window.web3 = new Web3(window.web3.currentProvider)
+        //   }
+        //   else {
+        //    console.log('Need to install MetaMask!')
+        //   }
+        // if (window.ethereum && window.ethereum.isMetaMask) {
+		// 	window.ethereum.request({ method: 'eth_requestAccounts'})
+		// 	.then(result => {
+        //         state.defaultAccount = result[0]
+		// 	})
+		// 	.catch(error => {
+        //         state.error = error.message
+			
+		// 	})
+
+        //     } else {
+        //         console.log('Need to install MetaMask')
+        //         state.error = 'Please install MetaMask browser extension to interact'
+        //     }
+        let provider = window.ethereum;
+        if (typeof provider !== 'undefined') {
+            provider
+                .request({ method: 'eth_requestAccounts' })
+                .then((accounts) => {
+                    state.defaultAccount = accounts[0]
+                })
+                .catch((err) => {
+                    state.error = err.message
+                    return
+                })
+            window.ethereum.on('accountsChanged', function (accounts) {
+                state.defaultAccount = accounts[0]
+            })
+        } else {
+			console.log('Need to install MetaMask')
+			state.error = 'Please install MetaMask browser extension to interact'
+		}
     },
     async getContractData() {
         state.isLoading = true
-        const web3js = window.web3
-        const getAccounts = await web3.eth.getAccounts()
-        // console.log(getAccounts)
-        state.defaultAccount = getAccounts[0]
+        let provider = window.ethereum
+        const web3js = new Web3(provider)
+        // const getAccounts = await web3.eth.getAccounts()
+        // // console.log(getAccounts)
+        // state.defaultAccount = getAccounts[0]
         const networkId = await web3js.eth.net.getId()
         const networkData = HelloWorld.networks[networkId]
         if(networkData) {
-            const helloWorld = new web3.eth.Contract(HelloWorld.abi, networkData.address)
+            const helloWorld = new web3js.eth.Contract(HelloWorld.abi, networkData.address)
             state.contractData = helloWorld
             const message = await helloWorld.methods.retrieve().call()
             // const message = await helloWorld.methods.message().call()
