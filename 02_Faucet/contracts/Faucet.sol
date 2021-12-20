@@ -36,7 +36,7 @@ contract Faucet is Mortal {
   // Give out ether to anyone who asks
   function withdraw(address payable _to, uint _withdrawAmount) public payable {
       // Limit withdrawal amount
-      require(_withdrawAmount <= 0.1 ether);
+      require(_withdrawAmount <= 0.5 ether);
 
       require(
         address(this).balance >= _withdrawAmount,
