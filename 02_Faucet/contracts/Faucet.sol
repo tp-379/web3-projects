@@ -11,7 +11,7 @@ contract Owned {
 
     // Access control modifier
     modifier onlyOwner {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "Only the contract owner can call this function");
         _;
     }
 }
@@ -32,6 +32,11 @@ contract Faucet is Mortal {
   function withdraw(uint withdraw_amount) public {
       // Limit withdrawal amount
       require(withdraw_amount <= 0.1 ether);
+
+      require(
+        address(this).balance >= withdraw_amount,
+        "Insufficient balance in faucet for withdrawal request"
+      );
 
       // Send the amount to the address that requested it
       msg.sender.transfer(withdraw_amount);
