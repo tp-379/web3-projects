@@ -13,6 +13,12 @@ contract Faucet {
   // Accept any incoming amount
   receive() external payable {}
 
+  // Contract destructor
+  function destroy() public {
+      require(msg.sender == owner);
+      selfdestruct(owner);
+  }
+
   // Give out ether to anyone who asks
   function withdraw(uint withdraw_amount) public {
       // Limit withdrawal amount
