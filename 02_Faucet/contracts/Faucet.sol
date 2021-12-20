@@ -10,12 +10,17 @@ contract Faucet {
     owner = msg.sender;
   }
 
+  // Access control modifier
+  modifier onlyOwner {
+      require(msg.sender == owner);
+      _;
+  }
+
   // Accept any incoming amount
   receive() external payable {}
 
   // Contract destructor
-  function destroy() public {
-      require(msg.sender == owner);
+  function destroy() public onlyOwner {
       selfdestruct(owner);
   }
 
