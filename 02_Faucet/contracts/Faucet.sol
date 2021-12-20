@@ -6,7 +6,7 @@ contract Owned {
 
     // Contract constructor: set owner
     constructor() {
-        owner = msg.sender;
+        owner = payable(msg.sender);
     }
 
     // Access control modifier
@@ -34,18 +34,18 @@ contract Faucet is Mortal {
   }
 
   // Give out ether to anyone who asks
-  function withdraw(uint withdraw_amount) public {
+  function withdraw(address payable _to, uint _withdrawAmount) public payable {
       // Limit withdrawal amount
-      require(withdraw_amount <= 0.1 ether);
+      require(_withdrawAmount <= 0.1 ether);
 
       require(
-        address(this).balance >= withdraw_amount,
+        address(this).balance >= _withdrawAmount,
         "Insufficient balance in faucet for withdrawal request"
       );
 
       // Send the amount to the address that requested it
-      msg.sender.transfer(withdraw_amount);
-      
-      emit Withdrawal(msg.sender, withdraw_amount);
+      _to.transfer(_withdrawAmount);
+
+      emit Withdrawal(msg.sender, _withdrawAmount);
   }
 }
