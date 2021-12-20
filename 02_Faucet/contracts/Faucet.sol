@@ -45,6 +45,7 @@ contract Faucet is Mortal {
 
       // Send the amount to the address that requested it
       msg.sender.transfer(withdraw_amount);
+      
       emit Withdrawal(msg.sender, withdraw_amount);
   }
 }
