@@ -1,0 +1,63 @@
+<template>
+  <div class="py-8 text-base leading-7 space-y-6 text-gray-600">
+    <p>Data fetched from Blockchain:</p>
+    <ul class="space-y-4">
+      <li class="flex items-center">
+        <svg
+          class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+          <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+        </svg>
+        <p class="ml-4">
+          contract Owner:
+          <code class="text-sm font-bold text-gray-900">goes here...</code>
+        </p>
+      </li>
+      <li class="flex items-center">
+        <svg
+          class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+          <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+        </svg>
+        <p class="ml-4">
+          contract Address:
+          <code class="text-sm font-bold text-gray-900">goes here ...</code>
+        </p>
+      </li>
+      <li class="flex items-center">
+        <svg
+          class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+          <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+        </svg>
+        <p class="ml-4">
+          Contract Balance:
+          <code class="text-sm font-bold text-gray-900"> goes here...</code>
+        </p>
+      </li>
+      <li class="flex items-center">
+        <svg
+          class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="11" />
+          <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+        </svg>
+        <p class="ml-4">
+          Current Address:
+          <code class="text-sm font-bold text-gray-900">goes here ...</code>
+        </p>
+      </li>
+    </ul>
+  </div>
+</template>
