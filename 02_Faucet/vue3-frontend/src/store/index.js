@@ -19,14 +19,14 @@ const methods = {
       provider
         .request({ method: "eth_requestAccounts" })
         .then((accounts) => {
-          state.defaultAccount = accounts[0]
+          state.currentAccount = accounts[0]
         })
         .catch((err) => {
           state.error = err.message
           return
         })
       window.ethereum.on("accountsChanged", function (accounts) {
-        state.defaultAccount = accounts[0]
+        state.currentAccount = accounts[0]
       })
     } else {
       console.log("Need to install MetaMask")
