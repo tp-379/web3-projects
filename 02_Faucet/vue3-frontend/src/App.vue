@@ -1,7 +1,9 @@
 <script>
-import NavBar from "./components/NavBar.vue";
-import ContractData from "./components/ConractData.vue";
-import WithdrawForm from "./components/WithdrawEtherForm.vue";
+import { provide } from "vue"
+import store from "./store"
+import NavBar from "./components/NavBar.vue"
+import ContractData from "./components/ConractData.vue"
+import WithdrawForm from "./components/WithdrawEtherForm.vue"
 
 export default {
   name: "App",
@@ -10,26 +12,62 @@ export default {
     ContractData,
     WithdrawForm,
   },
-};
+  setup() {
+    provide("store", store)
+
+    return {
+      store,
+    }
+  },
+}
 </script>
 
 <template>
   <div>
     <nav-bar />
     <div
-      class="min-h-screen bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12"
+      class="
+        min-h-screen
+        bg-gray-50
+        py-6
+        flex flex-col
+        justify-center
+        relative
+        overflow-hidden
+        sm:py-12
+      "
     >
       <img
         src="./assets/beams.jpg"
         alt=""
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-none"
+        class="
+          absolute
+          top-1/2
+          left-1/2
+          -translate-x-1/2 -translate-y-1/2
+          max-w-none
+        "
         width="1308"
       />
       <div
-        class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+        class="
+          absolute
+          inset-0
+          bg-[url(/img/grid.svg)] bg-center
+          [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]
+        "
       ></div>
       <div
-        class="relative px-6 pt-10 pb-8 bg-white shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg sm:mx-auto sm:rounded-lg sm:px-10"
+        class="
+          relative
+          px-6
+          pt-10
+          pb-8
+          bg-white
+          shadow-xl
+          ring-1 ring-gray-900/5
+          sm:max-w-lg sm:mx-auto sm:rounded-lg sm:px-10
+        "
       >
         <div class="max-w-md mx-auto">
           <img src="./assets/logo.png" class="h-16 mx-auto" />
