@@ -1,3 +1,14 @@
+<script>
+import ConnectWallet from "./components/ConnectWallet.vue"
+
+export default {
+  name: "App",
+  components: {
+    ConnectWallet,
+  },
+}
+</script>
+
 <template>
   <div
     class="
@@ -27,7 +38,7 @@
       class="
         absolute
         inset-0
-        bg-[url(/img/grid.svg)] bg-center
+        bg-[url(grid.svg)] bg-center
         [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]
       "
     ></div>
@@ -44,13 +55,10 @@
       "
     >
       <div class="max-w-md mx-auto">
-        <img src="./assets/logo.png" class="h-16" />
+        <img src="./assets/logo.png" class="h-16 mx-auto" />
         <div class="divide-y divide-gray-300/50">
           <div class="py-8 text-base leading-7 space-y-6 text-gray-600">
-            <p>
-              An advanced online playground for Tailwind CSS, including support
-              for things like:
-            </p>
+            <connect-wallet />
             <ul class="space-y-4">
               <li class="flex items-center">
                 <svg
