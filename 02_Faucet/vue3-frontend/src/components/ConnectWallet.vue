@@ -1,6 +1,6 @@
 <template>
-  <div class="py-4 px-6 text-sm font-medium">
-    <ul class="flex space-x-3">
+  <div class="flex text-sm font-medium">
+    <ul class="mx-auto space-x-3">
       <li>
         <button
           type="button"

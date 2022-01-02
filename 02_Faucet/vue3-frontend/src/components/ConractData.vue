@@ -1,6 +1,8 @@
 <template>
-  <div class="py-8 text-base leading-7 space-y-6 text-gray-600">
-    <p>Data fetched from Blockchain:</p>
+  <div class="text-base leading-7 space-y-6 text-gray-600">
+    <div class="flex">
+      <p class="mx-auto">Data fetched from Blockchain (using Ganache here):</p>
+    </div>
     <ul class="space-y-4">
       <li class="flex items-center">
         <svg
