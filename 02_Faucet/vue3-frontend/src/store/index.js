@@ -8,6 +8,7 @@ const state = reactive({
   contractBalance: "",
   contractData: "",
   currentAccount: "",
+  currentAccountBalance: "",
   error: "",
   isLoading: false,
 })
