@@ -7,6 +7,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "browserify-zlib": "^0.2.0",
+    "events": "^3.3.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.4",
     "vue": "^3.2.25",
     "web3": "^1.6.1"
   },
