@@ -3,7 +3,6 @@ import Web3 from "web3"
 import Faucet from "./../build/contracts/Faucet.json"
 
 const state = reactive({
-  ownerAddress: "",
   contractAddress: "",
   contractBalance: "",
   contractData: "",
@@ -71,15 +70,33 @@ const methods = {
           console.log(err)
         })
 
-      // Get the owner's address of the faucet contract
-      // const owner = faucet.owner
-      // console.log(web3js.utils.isAddress(faucet.owner))
-
       state.isLoading = false
     } else {
       state.error = "contract not deployed to detected network."
       state.isLoading = false
     }
+  },
+  async withdrawETH() {
+    state.isLoading = true
+    const web3js = new Web3(window.ethereum)
+    const faucet = state.contractData
+    const amount = web3js.utils.toWei("0.5", "ether")
+    await faucet.methods
+      .withdraw(state.currentAccount, amount)
+      .send({ from: state.currentAccount })
+      .then((receipt) => {
+        console.log(receipt)
+        window.location.reload()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    // trying to fire events
+    // faucet.events.Withdrawal().on("data", (event) => {
+    //   console.log(event)
+
+    // })
+    state.isLoading = false
   },
 }
 

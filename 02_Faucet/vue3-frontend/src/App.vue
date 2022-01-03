@@ -68,7 +68,7 @@ export default {
       "
     >
       <div class="max-w-md mx-auto" v-if="store.state.isLoading">
-        <div class="font-bold text-red-500 mx-auto">connecting...</div>
+        <div class="font-bold text-red-500 mx-auto">loading...</div>
       </div>
       <div class="max-w-md mx-auto" v-else>
         <div class="max-w-md mx-auto" v-if="store.state.error">
@@ -84,7 +84,8 @@ export default {
           <div class="pt-8 text-base leading-7">
             <p class="mb-2">
               Want to withdraw ETHER? You can withdraw only upto 0.5 ETH at a
-              time.
+              time. Click the button below to Withdraw into your selected
+              account.
             </p>
             <withdraw-form />
           </div>
