@@ -1,5 +1,5 @@
 <h1 align="center"> 
-01 - Faucet Project
+02 - Faucet Project
 </h1>
 <h3 align="center">
 Built using <b>Truffle Framework</b> and <b>Vuejs3</b>
