@@ -1,19 +1,19 @@
 <script>
 import { provide } from "vue"
 import store from "./store"
-import ConnectWallet from "./components/ConnectWallet.vue"
 import ContractData from "./components/ConractData.vue"
 import WithdrawForm from "./components/WithdrawEtherForm.vue"
 
 export default {
   name: "App",
   components: {
-    ConnectWallet,
     ContractData,
     WithdrawForm,
   },
   setup() {
     provide("store", store)
+    store.methods.connectBlockchain()
+    store.methods.getContractData()
 
     return {
       store,
@@ -67,11 +67,18 @@ export default {
         sm:max-w-lg sm:mx-auto sm:rounded-lg sm:px-10
       "
     >
-      <div class="max-w-md mx-auto">
+      <div class="max-w-md mx-auto" v-if="store.state.isLoading">
+        <div class="font-bold text-red-500 mx-auto">connecting...</div>
+      </div>
+      <div class="max-w-md mx-auto" v-else>
+        <div class="max-w-md mx-auto" v-if="store.state.error">
+          <div class="font-bold text-red-500 mx-auto">
+            {{ store.state.error }}
+          </div>
+        </div>
         <img src="./assets/logo.png" class="h-16 mx-auto" />
         <div class="divide-y divide-gray-300/50">
           <div class="py-8 text-base leading-7 space-y-6 text-gray-600">
-            <connect-wallet />
             <contract-data />
           </div>
           <div class="pt-8 text-base leading-7">

@@ -1,3 +1,15 @@
+<script>
+import { inject } from "vue"
+export default {
+  name: "Contract Data",
+  setup() {
+    const store = inject("store")
+    return {
+      store,
+    }
+  },
+}
+</script>
 <template>
   <div class="text-base leading-7 space-y-6 text-gray-600">
     <div class="flex">
@@ -15,7 +27,9 @@
         </svg>
         <p class="ml-4">
           contract Owner:
-          <code class="text-sm font-bold text-gray-900">goes here...</code>
+          <code class="text-sm font-bold text-gray-900">{{
+            store.state.ownerAddress
+          }}</code>
         </p>
       </li>
       <li class="flex items-center">
@@ -29,7 +43,9 @@
         </svg>
         <p class="ml-4">
           contract Address:
-          <code class="text-sm font-bold text-gray-900">goes here ...</code>
+          <code class="text-sm font-bold text-gray-900">{{
+            store.state.contractAddress
+          }}</code>
         </p>
       </li>
       <li class="flex items-center">
@@ -43,7 +59,10 @@
         </svg>
         <p class="ml-4">
           Contract Balance:
-          <code class="text-sm font-bold text-gray-900"> goes here...</code>
+          <code class="text-sm font-bold text-gray-900">{{
+            store.state.contractBalance
+          }}</code>
+          ETH
         </p>
       </li>
       <li class="flex items-center">
@@ -57,7 +76,9 @@
         </svg>
         <p class="ml-4">
           Current Address:
-          <code class="text-sm font-bold text-gray-900">goes here ...</code>
+          <code class="text-sm font-bold text-gray-900">{{
+            store.state.currentAccount
+          }}</code>
         </p>
       </li>
       <li class="flex items-center">
@@ -71,7 +92,10 @@
         </svg>
         <p class="ml-4">
           Current Address Balance:
-          <code class="text-sm font-bold text-gray-900">goes here ...</code>
+          <code class="text-sm font-bold text-gray-900">{{
+            store.state.currentAccountBalance
+          }}</code>
+          ETH
         </p>
       </li>
     </ul>

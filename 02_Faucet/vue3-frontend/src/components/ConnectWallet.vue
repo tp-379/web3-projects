@@ -1,3 +1,18 @@
+<script>
+import { inject } from "vue"
+
+export default {
+  name: "Conect Wallet",
+  setup() {
+    const store = inject("store")
+
+    return {
+      store,
+    }
+  },
+}
+</script>
+
 <template>
   <div class="flex text-sm font-medium">
     <ul class="mx-auto space-x-3">
@@ -13,6 +28,7 @@
             px-3
             rounded-lg
           "
+          @click="store.methods.detectMetamask"
         >
           Connect Wallet
         </button>

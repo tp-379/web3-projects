@@ -38,17 +38,43 @@ const methods = {
     state.isLoading = true
     let provider = window.ethereum
     const web3js = new Web3(provider)
-    // const getAccounts = await web3.eth.getAccounts()
-    // // console.log(getAccounts)
-    // state.defaultAccount = getAccounts[0]
     const networkId = await web3js.eth.net.getId()
     const networkData = Faucet.networks[networkId]
     if (networkData) {
       const faucet = new web3js.eth.Contract(Faucet.abi, networkData.address)
       state.contractData = faucet
-      // const message = await helloWorld.methods.retrieve().call()
-      // const message = await helloWorld.methods.message().call()
-      // state.message = message
+
+      // Get contract address byusing networkData
+      // console.log(networkData.address)
+
+      // Get contract address by using faucet.options
+      const faucetAddress = faucet.options.address
+      state.contractAddress = faucetAddress
+
+      // Get the balance of the faucet contract and convert it to ETH
+      await web3js.eth
+        .getBalance(faucetAddress)
+        .then((balance) => {
+          state.contractBalance = web3js.utils.fromWei(balance)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
+      // Get the balance of the current account and convert it to ETH
+      await web3js.eth
+        .getBalance(state.currentAccount)
+        .then((balance) => {
+          state.currentAccountBalance = web3js.utils.fromWei(balance)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
+      // Get the owner's address of the faucet contract
+      // const owner = faucet.owner
+      // console.log(web3js.utils.isAddress(faucet.owner))
+
       state.isLoading = false
     } else {
       state.error = "contract not deployed to detected network."
