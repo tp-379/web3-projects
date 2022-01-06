@@ -3,9 +3,17 @@ pragma solidity >=0.4.22 <0.9.0;
 
 /**
  * @title CrowdFunding
- * @dev
+ * @dev CrowdFunding is a contract that allows multiple parties to contribute to a single project.
  */
 contract CrowdFunding {
+    // struct type to represent a Request
+    struct Request {
+        string description; // description of request
+        uint256 value; // amount requested in request
+        address recipient; // address of vendor/recipient whom money will be sent
+        bool complete; // True if request is completed
+    }
+
     // state variable of type address containing manager's address
     address public manager;
 
