@@ -1,20 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-contract CampaignFactory {
-    CrowdFunding[] public deployedCampaigns;
+contract ProjectFactory {
+    CrowdFunding[] public deployedProjects;
 
-    function createCampaign(uint256 minimum) public {
-        CrowdFunding newCampaign = new CrowdFunding(minimum, msg.sender);
-        deployedCampaigns.push(newCampaign);
+    function createProject(uint256 minimum) public {
+        CrowdFunding newProject = new CrowdFunding(minimum, msg.sender);
+        deployedProjects.push(newProject);
     }
 
-    function getDeployedCampaigns()
-        public
-        view
-        returns (CrowdFunding[] memory)
-    {
-        return deployedCampaigns;
+    function getDeployedProjects() public view returns (CrowdFunding[] memory) {
+        return deployedProjects;
     }
 }
 
