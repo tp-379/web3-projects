@@ -14,6 +14,9 @@ contract CrowdFunding {
         bool complete; // True if request is completed
     }
 
+    // array of requests
+    Request[] public requests;
+
     // state variable of type address containing manager's address
     address public manager;
 
@@ -25,7 +28,10 @@ contract CrowdFunding {
 
     // modifier onlyByManager is a modifier that checks if the sender is the manager
     modifier onlyByManager() {
-        require(msg.sender == manager);
+        require(
+            msg.sender == manager,
+            "Only the manager can create new requests."
+        );
         _;
     }
 
@@ -35,6 +41,7 @@ contract CrowdFunding {
         minContribution = _minContribution;
     }
 
+    //function to set the approvers
     function contribute() public payable {
         // checking if the incoming contribution amount is greater than or equal to minimum contribution
         require(
@@ -44,5 +51,21 @@ contract CrowdFunding {
 
         // push the address of the contributor in approvers array
         approvers.push(msg.sender);
+    }
+
+    // function to create a request
+    function createRequest(
+        string memory _description,
+        uint256 _value,
+        address _recipient
+    ) public onlyByManager {
+        Request memory newRequest = Request({
+            description: _description,
+            value: _value,
+            recipient: _recipient,
+            complete: false
+        });
+
+        requests.push(newRequest);
     }
 }
