@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+/**
+ * @title ProjectFactory
+ * @dev Factory for creating projects
+ */
 contract ProjectFactory {
     CrowdFunding[] public deployedProjects;
 
@@ -119,6 +123,7 @@ contract CrowdFunding {
         request.complete = true;
     }
 
+    // function to get summary of requests
     function getSummary()
         public
         view
@@ -139,6 +144,7 @@ contract CrowdFunding {
         );
     }
 
+    // function to get request count
     function getRequestsCount() public view returns (uint256) {
         return numRequests;
     }
