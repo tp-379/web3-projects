@@ -23,6 +23,12 @@ contract CrowdFunding {
     // state variable of type array of addresses containing addresses of approvers
     address[] public approvers;
 
+    // modifier onlyByManager is a modifier that checks if the sender is the manager
+    modifier onlyByManager() {
+        require(msg.sender == manager);
+        _;
+    }
+
     // Contract constructor: set manager, set minimum contribution
     constructor(uint256 _minContribution) {
         manager = msg.sender;
