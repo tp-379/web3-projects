@@ -1,6 +1,22 @@
 <template>
   <div class="px-4 py-6 sm:px-0">
-    <Summary />
+    <div class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+          <h2
+            class="text-base text-indigo-600 font-semibold tracking-wide uppercase"
+          >
+            CrowdFunding
+          </h2>
+          <p
+            class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            A better way to fund a project
+          </p>
+        </div>
+        <Summary />
+      </div>
+    </div>
     <div class="bg-white mt-6">
       <div
         class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
