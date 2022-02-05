@@ -1,4 +1,7 @@
 import { createStore } from 'vuex'
+import Web3 from 'web3'
+// import ProjectFactory from './../build/contracts/ProjectFactory.json'
+// import CrowdFunding from './../build/contracts/CrowdFunding.json'
 
 export default createStore({
   state: {
@@ -43,6 +46,8 @@ export default createStore({
     },
     async onClickConnect({ commit }) {
       let provider = window.ethereum
+      let web3 = new Web3(provider)
+      console.log(web3)
       try {
         commit('setLoading', true)
         commit('clearError')
