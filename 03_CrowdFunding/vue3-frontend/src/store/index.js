@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
-import Web3 from 'web3'
-// import ProjectFactory from './../build/contracts/ProjectFactory.json'
-// import CrowdFunding from './../build/contracts/CrowdFunding.json'
+import projectFactoryInstance from './../utils/projectFactoryInstance'
+// import crowdFundingInstance from './../utils/crowdFundingInstance'
 
 export default createStore({
   state: {
+    loadedProjects: [],
     isMetaMask: false,
     defaultAccount: '',
     networkId: '',
@@ -12,6 +12,9 @@ export default createStore({
     isLoading: false,
   },
   mutations: {
+    setLoadedProjects(state, payload) {
+      state.loadedProjects = payload
+    },
     setLoading(state, payload) {
       state.isLoading = payload
     },
@@ -32,6 +35,21 @@ export default createStore({
     },
   },
   actions: {
+    async loadProjects({ commit }) {
+      commit('setLoading', true)
+      //code for loading projects
+      let projects = await projectFactoryInstance.methods
+        .getDeployedProjects()
+        .call()
+      if (projects.length > 0) {
+        commit('setLoadedProjects', projects)
+        commit('setLoading', false)
+      } else {
+        commit('setLoading', false)
+        commit('setError', 'No projects found')
+      }
+    },
+    // check if metamask is installed or not
     isMetaMaskInstalled({ commit }) {
       let provider = window.ethereum
       if (typeof provider !== 'undefined') {
@@ -45,13 +63,10 @@ export default createStore({
       }
     },
     async onClickConnect({ commit }) {
-      let provider = window.ethereum
-      let web3 = new Web3(provider)
-      console.log(web3)
+      commit('setLoading', true)
+      commit('clearError')
       try {
-        commit('setLoading', true)
-        commit('clearError')
-        const accounts = await provider
+        const accounts = await window.ethereum
           .request({
             method: 'wallet_requestPermissions',
             params: [
@@ -69,6 +84,7 @@ export default createStore({
         commit('setLoading', false)
       } catch (err) {
         commit('setError', err.message)
+        commit('setLoading', false)
       }
     },
     clearError({ commit }) {
