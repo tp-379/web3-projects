@@ -14,7 +14,6 @@
             A better way to fund a project
           </p>
         </div>
-        <Summary />
       </div>
     </div>
     <div class="bg-white mt-6">
@@ -47,13 +46,11 @@
   </div>
 </template>
 <script>
-import Summary from './../components/Summary.vue'
 import ProjectCard from './../components/ProjectCard.vue'
 import Button from './../components/Button.vue'
 
 export default {
   components: {
-    Summary,
     ProjectCard,
     Button,
   },
