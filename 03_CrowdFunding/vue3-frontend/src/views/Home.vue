@@ -34,9 +34,9 @@
           class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
         >
           <ProjectCard
-            v-for="i in 4"
-            :key="i"
-            address="0xvnjberoi0xjsdifb06hj0x"
+            v-for="project in projects"
+            :key="project"
+            address="project"
             isOpen="Active"
             contribution="20 ETH"
           />
@@ -46,13 +46,23 @@
   </div>
 </template>
 <script>
+import { mapGetters, useStore } from 'vuex'
 import ProjectCard from './../components/ProjectCard.vue'
 import Button from './../components/Button.vue'
+import { computed } from '@vue/runtime-core'
 
 export default {
   components: {
     ProjectCard,
     Button,
+  },
+  setup() {
+    const store = useStore()
+    const projects = computed(() => store.getters.getLoadedProjects)
+
+    return {
+      projects,
+    }
   },
 }
 </script>

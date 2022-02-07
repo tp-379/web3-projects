@@ -95,6 +95,9 @@ export default createStore({
     getMetaMaskState(state) {
       return state.isMetaMask
     },
+    getLoadedProjects(state) {
+      return state.loadedProjects
+    },
     getDefaultAccount(state) {
       return state.defaultAccount
     },
