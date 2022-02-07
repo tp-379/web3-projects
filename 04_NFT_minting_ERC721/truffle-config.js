@@ -18,10 +18,12 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require('@truffle/hdwallet-provider')
+
+const fs = require('fs')
+const mnemonic = fs.readFileSync('.secret').toString().trim()
+const infuraURL =
+  'https://rinkeby.infura.io/v3/1c67b32dfab840d18348bb0c2a6447d2'
 
 module.exports = {
   /**
@@ -55,6 +57,16 @@ module.exports = {
     // from: <address>,        // Account to send txs from (default: accounts[0])
     // websocket: true        // Enable EventEmitter interface for web3 (default: false)
     // },
+
+    // rinkeby network deployment script
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, infuraURL),
+      network_id: 4, // Rinkeby's id
+      gas: 5500000, // Rinkeby has a lower block limit than mainnet
+      confirmations: 2, // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200, // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true, // Skip dry run before migrations? (default: false for public nets )
+    },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
