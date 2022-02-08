@@ -1,5 +1,5 @@
-const ColorToken = artifacts.require('ColorToken')
+const NamedToken = artifacts.require('NamedToken')
 
 module.exports = function (deployer) {
-  deployer.deploy(ColorToken)
+  deployer.deploy(NamedToken)
 }

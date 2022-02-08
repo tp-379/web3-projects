@@ -23,9 +23,12 @@ const HDWalletProvider = require('@truffle/hdwallet-provider')
 const fs = require('fs')
 const mnemonic = fs.readFileSync('.secret').toString().trim()
 const infuraURL =
-  'https://rinkeby.infura.io/v3/1c67b32dfab840d18348bb0c2a6447d2'
+  'https://rinkeby.infura.io/v3/39122cb0ed414863af406e62cbc6e877'
 
 module.exports = {
+  // contracts build directory
+  contracts_build_directory: './python-project/build/contracts/',
+
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -35,7 +38,6 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
-
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
