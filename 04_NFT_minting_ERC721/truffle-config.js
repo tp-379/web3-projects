@@ -23,7 +23,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider')
 const fs = require('fs')
 const mnemonic = fs.readFileSync('.secret').toString().trim()
 const infuraURL =
-  'https://rinkeby.infura.io/v3/1c67b32dfab840d18348bb0c2a6447d2'
+  'https://rinkeby.infura.io/v3/39122cb0ed414863af406e62cbc6e877'
 
 module.exports = {
   // contracts build directory
