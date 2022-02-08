@@ -4,4 +4,4 @@ Mint Named Tokens - MNT
 <h5 align="center">
 project built using Truffle suite and Python using web3.py
 </h5>
-![MNT-Python](/04_NFT_minting_ERC721/python-project/screenshot.png?raw=true "MNT-Python")
+![MNT-Python](/python-project/screenshot.png?raw=true "MNT-Python")
