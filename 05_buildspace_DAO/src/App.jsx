@@ -17,6 +17,10 @@ const tokenModule = sdk.getTokenModule(
   '0xC8f6c17cb168b317db3FBa4D3C20A8431Ad06407'
 )
 
+const voteModule = sdk.getVoteModule(
+  '0x206c1C72ebAbC16828B550E763aec56C00308Ff0'
+)
+
 const App = () => {
   // Use the connectWallet hook thirdweb gives us.
   const { connectWallet, address, error, provider } = useWeb3()
@@ -41,6 +45,54 @@ const App = () => {
   const shortenAddress = (str) => {
     return str.substring(0, 6) + '...' + str.substring(str.length - 4)
   }
+
+  const [proposals, setProposals] = useState([])
+  const [isVoting, setIsVoting] = useState(false)
+  const [hasVoted, setHasVoted] = useState(false)
+
+  // Retrieve all our existing proposals from the contract.
+  useEffect(async () => {
+    if (!hasClaimedNFT) {
+      return
+    }
+    // A simple call to voteModule.getAll() to grab the proposals.
+    try {
+      const proposals = await voteModule.getAll()
+      setProposals(proposals)
+      console.log('🌈 Proposals:', proposals)
+    } catch (error) {
+      console.log('failed to get proposals', error)
+    }
+  }, [hasClaimedNFT])
+
+  // We also need to check if the user already voted.
+  useEffect(async () => {
+    if (!hasClaimedNFT) {
+      return
+    }
+
+    // If we haven't finished retrieving the proposals from the useEffect above
+    // then we can't check if the user voted yet!
+    if (!proposals.length) {
+      return
+    }
+
+    // Check if the user has already voted on the first proposal.
+    try {
+      const hasVoted = await voteModule.hasVoted(
+        proposals[0].proposalId,
+        address
+      )
+      setHasVoted(hasVoted)
+      if (hasVoted) {
+        console.log('🥵 User has already voted')
+      } else {
+        console.log('🙂 User has not voted yet')
+      }
+    } catch (error) {
+      console.error('Failed to check if wallet has voted', error)
+    }
+  }, [hasClaimedNFT, proposals, address])
 
   // This useEffect grabs all the addresses of our members holding our NFT.
   useEffect(async () => {
