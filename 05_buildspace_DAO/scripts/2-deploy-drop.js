@@ -8,11 +8,11 @@ const app = sdk.getAppModule('0x5EDeF07a4390cA43EFb9Bd6bcE8Fc03bc6516619')
   try {
     const bundleDropModule = await app.deployBundleDropModule({
       // The collection's name, ex. CryptoPunks
-      name: 'NarutoDAO Membership',
+      name: 'pizzaDAO Membership',
       // A description for the collection.
-      description: 'A DAO for fans of Naruto.',
+      description: 'A DAO for pizza fans.',
       // The image for the collection that will show up on OpenSea.
-      image: readFileSync('scripts/assets/naruto.png'),
+      image: readFileSync('scripts/assets/pizza.png'),
       // We need to pass in the address of the person who will be receiving the proceeds from sales of nfts in the module.
       // We're planning on not charging people for the drop, so we'll pass in the 0x0 address
       // you can set this to your own wallet address if you want to charge for the drop.
