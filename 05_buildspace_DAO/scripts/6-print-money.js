@@ -2,7 +2,9 @@ import { ethers } from 'ethers'
 import sdk from './1-initialize-sdk.js'
 
 // This is the address of our ERC-20 contract printed out in the step before.
-const tokenModule = sdk.getTokenModule('INSERT_YOUR_TOKEN_MODULE_ADDRESS')
+const tokenModule = sdk.getTokenModule(
+  '0xC8f6c17cb168b317db3FBa4D3C20A8431Ad06407'
+)
 
 ;(async () => {
   try {
@@ -19,7 +21,7 @@ const tokenModule = sdk.getTokenModule('INSERT_YOUR_TOKEN_MODULE_ADDRESS')
     console.log(
       '✅ There now is',
       ethers.utils.formatUnits(totalSupply, 18),
-      '$HOKAGE in circulation'
+      '$PZA in circulation'
     )
   } catch (error) {
     console.error('Failed to print money', error)
