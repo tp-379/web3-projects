@@ -31,14 +31,12 @@
           </router-link>
         </div>
         <div
-          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+          class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8"
         >
           <ProjectCard
             v-for="project in projects"
             :key="project"
-            address="project"
-            isOpen="Active"
-            contribution="20 ETH"
+            :address="project"
           />
         </div>
       </div>
