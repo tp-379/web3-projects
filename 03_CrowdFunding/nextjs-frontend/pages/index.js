@@ -15,7 +15,7 @@ class CampaignIndex extends Component {
       return {
         header: address,
         description: (
-          <Link href="#">
+          <Link href={`/campaigns/${encodeURIComponent(address)}`}>
             <a>View Campaign</a>
           </Link>
         ),
