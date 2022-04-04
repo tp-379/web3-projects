@@ -59,3 +59,21 @@ project built using Truffle suite and Python using web3.py
 <div>
   <img alt="MNT-Python" src="04_NFT_minting_ERC721/python-project/screenshot.png" />
 </div>
+
+# buildspace x thirdweb - Build your own DAO with just Javascript
+
+### **Welcome 👋**
+
+To get started with this course, clone this repo and follow these commands:
+
+1. Run `npm install` at the root of your directory
+2. Run `npm start` to start the project
+3. Start coding!
+
+### **Questions?**
+
+Have some questions make sure you head over to your [buildspace Dashboard](https://app.buildspace.so/projects/COb520aae3-7925-42f4-a5e7-eaf718933766) and link your Discord account so you can get access to helpful channels and your instructor!
+
+<div>
+  <img alt="DAO" src="05_buildspace_DAO/../05_DAO.png" />
+</div>
