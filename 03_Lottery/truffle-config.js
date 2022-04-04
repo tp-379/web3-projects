@@ -34,7 +34,7 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
-  contracts_build_directory: './react-frontend/src/build/contracts/',
+  contracts_build_directory: './react-frontend/build/contracts/',
 
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
