@@ -11,4 +11,4 @@ This project is built using the Truffle framework and has a simple smart contrac
 </ul>
 Also this project has a frontend build in <b>Reactjs</b>. Used Tailwind CSS for styling the views.
 
-![Alt text](/03_Lottery/03_Lottery.png?raw=true 'Frontend of the Lottery DApp')
+![Alt text](/03_Lottery/3_Lottery.png?raw=true 'Frontend of the Lottery DApp')
